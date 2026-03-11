@@ -42,44 +42,55 @@
       border-radius: 6px;
     }
 
-    .help-trigger {
+    .status .help-trigger {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 10px 14px;
+      padding: 12px 16px;
+      max-width: 240px;
       border-radius: 999px;
-      background: linear-gradient(120deg, #0f172a, #1e293b);
+      background: linear-gradient(120deg, #0f172a, #1e293b, #0f172a);
       color: #f8fafc;
-      border: 1px solid #0f172a;
+      border: 1px solid #0b1120;
       font-weight: 600;
+      letter-spacing: 0.02em;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      border-left: none;
+      margin-right: auto;
     }
 
-    .help-trigger:hover {
+    .status .help-trigger:hover {
       transform: translateY(-1px);
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+      filter: brightness(1.05);
     }
 
-    .help-output {
+    .status .help-output {
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 12px 14px;
       border-radius: 12px;
-      background: linear-gradient(120deg, #fff7ed, #ffedd5);
-      border: 1px solid #fdba74;
-      font-weight: 600;
+      background: linear-gradient(120deg, #fff7ed, #ffedd5, #fed7aa);
+      border: 1px solid #f97316;
+      font-weight: 700;
       color: #9a3412;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
+      border-left: none;
     }
 
-    .help-label {
-      font-size: 0.85rem;
-      font-weight: 700;
+    .help-output::before {
+      content: "Hint";
+      font-size: 0.75rem;
+      font-weight: 800;
       color: #92400e;
       letter-spacing: 0.12em;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(249, 115, 22, 0.12);
     }
 
     .board {
@@ -126,7 +137,7 @@
       <p id="locations">Number of locations checked is zero.</p>
       <p id="score">Score is zero.</p>
       <p id="helpTrigger" class="help-trigger" onclick="help()">Click for help</p>
-      <p id="help" class="help-output"><span class="help-label">Hint</span><span id="helpValue">Help report</span></p>
+      <p id="help" class="help-output">Help report</p>
     </div>
 
     <div class="board">
@@ -197,6 +208,9 @@
     const lorikeetLocations = [3, 25];
     const buntingLocations = [2, 5, 11, 20, 21];
     let gameOver = false;
+    const totalLocations = 35;
+    const columns = 7;
+    const rows = 5;
 
     function updateStatus() {
       const locationsText = locationsVisited === 0
@@ -213,24 +227,37 @@
 
       const imgId = ids[position];
       const img = document.getElementById(imgId);
+      if (!img) {
+        return;
+      }
+
+      let scored = false;
 
       if (position === statueLocation) {
         img.src = "images/Gloden statue.png";
         img.onclick = function () { };
         score -= 3;
         gameOver = true;
+        scored = true;
       } else if (position === toucanLocation) {
         img.src = "images/Toucan.png";
         img.onclick = function () { };
         score += 5;
+        scored = true;
       } else if (lorikeetLocations.includes(position)) {
         img.src = "images/lorikeet.png";
         img.onclick = function () { };
         score += 3;
+        scored = true;
       } else if (buntingLocations.includes(position)) {
         img.src = "images/bunting.png";
         img.onclick = function () { };
         score += 1;
+        scored = true;
+      }
+
+      if (!scored) {
+        img.src = "images/Tree.png";
       }
 
       locationsVisited += 1;
@@ -241,9 +268,6 @@
     }
 
     function help() {
-      const totalLocations = 35;
-      const columns = 7;
-      const rows = 5;
       const row = Math.floor(lastLocation / columns);
       const col = lastLocation % columns;
 
@@ -253,7 +277,7 @@
       const down = (lastLocation + columns) % totalLocations;
       const buntingNeighbors = [left, right, up, down];
 
-      const helpValue = document.getElementById("helpValue");
+      const helpValue = document.getElementById("help");
 
       if (buntingNeighbors.some((loc) => buntingLocations.includes(loc))) {
         helpValue.textContent = "cheep";
