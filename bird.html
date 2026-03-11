@@ -42,6 +42,46 @@
       border-radius: 6px;
     }
 
+    .help-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      border: 1px solid #0f172a;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .help-trigger:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+    }
+
+    .help-output {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: linear-gradient(120deg, #fff7ed, #ffedd5);
+      border: 1px solid #fdba74;
+      font-weight: 600;
+      color: #9a3412;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #92400e;
+      letter-spacing: 0.12em;
+    }
+
     .board {
       display: flex;
       flex-direction: column;
@@ -85,8 +125,8 @@
     <div class="status">
       <p id="locations">Number of locations checked is zero.</p>
       <p id="score">Score is zero.</p>
-      <p id="helpTrigger" onclick="help()">Click for help.</p>
-      <p id="help">Help report</p>
+      <p id="helpTrigger" class="help-trigger" onclick="help()">Click for help</p>
+      <p id="help" class="help-output"><span class="help-label">Hint</span><span id="helpValue">Help report</span></p>
     </div>
 
     <div class="board">
@@ -213,8 +253,10 @@
       const down = (lastLocation + columns) % totalLocations;
       const buntingNeighbors = [left, right, up, down];
 
+      const helpValue = document.getElementById("helpValue");
+
       if (buntingNeighbors.some((loc) => buntingLocations.includes(loc))) {
-        document.getElementById("help").textContent = "cheep";
+        helpValue.textContent = "cheep";
         return;
       }
 
@@ -240,16 +282,16 @@
       }
 
       if (toucanNearby) {
-        document.getElementById("help").textContent = "caw";
+        helpValue.textContent = "caw";
         return;
       }
 
       if (statueNearby) {
-        document.getElementById("help").textContent = "thrrum";
+        helpValue.textContent = "thrrum";
         return;
       }
 
-      document.getElementById("help").textContent = "silence";
+      helpValue.textContent = "silence";
     }
   </script>
 </body>
