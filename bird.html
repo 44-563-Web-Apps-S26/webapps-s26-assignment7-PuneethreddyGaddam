@@ -85,61 +85,172 @@
     <div class="status">
       <p id="locations">Number of locations checked is zero.</p>
       <p id="score">Score is zero.</p>
-      <p>Click for help.</p>
+      <p id="helpTrigger" onclick="help()">Click for help.</p>
       <p id="help">Help report</p>
     </div>
 
     <div class="board">
       <div class="row">
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
+        <div class="location"><img id="location0" src="images/Tree.png" alt="bush or tree" onclick="check(0)"></div>
+        <div class="location"><img id="location1" src="images/Tree.png" alt="bush or tree" onclick="check(1)"></div>
+        <div class="location"><img id="location2" src="images/Tree.png" alt="bush or tree" onclick="check(2)"></div>
+        <div class="location"><img id="location3" src="images/Tree.png" alt="bush or tree" onclick="check(3)"></div>
+        <div class="location"><img id="location4" src="images/Tree.png" alt="bush or tree" onclick="check(4)"></div>
+        <div class="location"><img id="location5" src="images/Tree.png" alt="bush or tree" onclick="check(5)"></div>
+        <div class="location"><img id="location6" src="images/Tree.png" alt="bush or tree" onclick="check(6)"></div>
       </div>
 
       <div class="row">
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
+        <div class="location"><img id="location7" src="images/Tree.png" alt="bush or tree" onclick="check(7)"></div>
+        <div class="location"><img id="location8" src="images/Tree.png" alt="bush or tree" onclick="check(8)"></div>
+        <div class="location"><img id="location9" src="images/Tree.png" alt="bush or tree" onclick="check(9)"></div>
+        <div class="location"><img id="location10" src="images/Tree.png" alt="bush or tree" onclick="check(10)"></div>
+        <div class="location"><img id="location11" src="images/Tree.png" alt="bush or tree" onclick="check(11)"></div>
+        <div class="location"><img id="location12" src="images/Tree.png" alt="bush or tree" onclick="check(12)"></div>
+        <div class="location"><img id="location13" src="images/Tree.png" alt="bush or tree" onclick="check(13)"></div>
       </div>
 
       <div class="row">
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
+        <div class="location"><img id="location14" src="images/Tree.png" alt="bush or tree" onclick="check(14)"></div>
+        <div class="location"><img id="location15" src="images/Tree.png" alt="bush or tree" onclick="check(15)"></div>
+        <div class="location"><img id="location16" src="images/Tree.png" alt="bush or tree" onclick="check(16)"></div>
+        <div class="location"><img id="location17" src="images/Tree.png" alt="bush or tree" onclick="check(17)"></div>
+        <div class="location"><img id="location18" src="images/Tree.png" alt="bush or tree" onclick="check(18)"></div>
+        <div class="location"><img id="location19" src="images/Tree.png" alt="bush or tree" onclick="check(19)"></div>
+        <div class="location"><img id="location20" src="images/Tree.png" alt="bush or tree" onclick="check(20)"></div>
       </div>
 
       <div class="row">
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
+        <div class="location"><img id="location21" src="images/Tree.png" alt="bush or tree" onclick="check(21)"></div>
+        <div class="location"><img id="location22" src="images/Tree.png" alt="bush or tree" onclick="check(22)"></div>
+        <div class="location"><img id="location23" src="images/Tree.png" alt="bush or tree" onclick="check(23)"></div>
+        <div class="location"><img id="location24" src="images/Tree.png" alt="bush or tree" onclick="check(24)"></div>
+        <div class="location"><img id="location25" src="images/Tree.png" alt="bush or tree" onclick="check(25)"></div>
+        <div class="location"><img id="location26" src="images/Tree.png" alt="bush or tree" onclick="check(26)"></div>
+        <div class="location"><img id="location27" src="images/Tree.png" alt="bush or tree" onclick="check(27)"></div>
       </div>
 
       <div class="row">
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
-        <div class="location"><img src="images/Tree.png" alt="bush or tree"></div>
+        <div class="location"><img id="location28" src="images/Tree.png" alt="bush or tree" onclick="check(28)"></div>
+        <div class="location"><img id="location29" src="images/Tree.png" alt="bush or tree" onclick="check(29)"></div>
+        <div class="location"><img id="location30" src="images/Tree.png" alt="bush or tree" onclick="check(30)"></div>
+        <div class="location"><img id="location31" src="images/Tree.png" alt="bush or tree" onclick="check(31)"></div>
+        <div class="location"><img id="location32" src="images/Tree.png" alt="bush or tree" onclick="check(32)"></div>
+        <div class="location"><img id="location33" src="images/Tree.png" alt="bush or tree" onclick="check(33)"></div>
+        <div class="location"><img id="location34" src="images/Tree.png" alt="bush or tree" onclick="check(34)"></div>
       </div>
     </div>
   </main>
+  <script>
+    const ids = [
+      "location0", "location1", "location2", "location3", "location4", "location5", "location6",
+      "location7", "location8", "location9", "location10", "location11", "location12", "location13",
+      "location14", "location15", "location16", "location17", "location18", "location19", "location20",
+      "location21", "location22", "location23", "location24", "location25", "location26", "location27",
+      "location28", "location29", "location30", "location31", "location32", "location33", "location34"
+    ];
+    let score = 0;
+    let locationsVisited = 0;
+    let lastLocation = 0;
+    const statueLocation = 19;
+    const toucanLocation = 14;
+    const lorikeetLocations = [3, 25];
+    const buntingLocations = [2, 5, 11, 20, 21];
+    let gameOver = false;
+
+    function updateStatus() {
+      const locationsText = locationsVisited === 0
+        ? "Number of locations checked is zero."
+        : `Number of locations checked is ${locationsVisited}.`;
+      document.getElementById("locations").textContent = locationsText;
+      document.getElementById("score").textContent = `Score is ${score}.`;
+    }
+
+    function check(position) {
+      if (gameOver) {
+        return;
+      }
+
+      const imgId = ids[position];
+      const img = document.getElementById(imgId);
+
+      if (position === statueLocation) {
+        img.src = "images/Gloden statue.png";
+        img.onclick = function () { };
+        score -= 3;
+        gameOver = true;
+      } else if (position === toucanLocation) {
+        img.src = "images/Toucan.png";
+        img.onclick = function () { };
+        score += 5;
+      } else if (lorikeetLocations.includes(position)) {
+        img.src = "images/lorikeet.png";
+        img.onclick = function () { };
+        score += 3;
+      } else if (buntingLocations.includes(position)) {
+        img.src = "images/bunting.png";
+        img.onclick = function () { };
+        score += 1;
+      }
+
+      locationsVisited += 1;
+      img.alt = `Checked location ${position}.`;
+      img.title = `Checked location ${position}.`;
+      updateStatus();
+      lastLocation = position;
+    }
+
+    function help() {
+      const totalLocations = 35;
+      const columns = 7;
+      const rows = 5;
+      const row = Math.floor(lastLocation / columns);
+      const col = lastLocation % columns;
+
+      const left = col === 0 ? lastLocation + (columns - 1) : lastLocation - 1;
+      const right = col === columns - 1 ? lastLocation - (columns - 1) : lastLocation + 1;
+      const up = (lastLocation - columns + totalLocations) % totalLocations;
+      const down = (lastLocation + columns) % totalLocations;
+      const buntingNeighbors = [left, right, up, down];
+
+      if (buntingNeighbors.some((loc) => buntingLocations.includes(loc))) {
+        document.getElementById("help").textContent = "cheep";
+        return;
+      }
+
+      let toucanNearby = false;
+      let statueNearby = false;
+
+      for (let r = row - 1; r <= row + 1; r += 1) {
+        if (r < 0 || r >= rows) {
+          continue;
+        }
+        for (let c = col - 1; c <= col + 1; c += 1) {
+          if (c < 0 || c >= columns) {
+            continue;
+          }
+          const loc = r * columns + c;
+          if (loc === toucanLocation) {
+            toucanNearby = true;
+          }
+          if (loc === statueLocation) {
+            statueNearby = true;
+          }
+        }
+      }
+
+      if (toucanNearby) {
+        document.getElementById("help").textContent = "caw";
+        return;
+      }
+
+      if (statueNearby) {
+        document.getElementById("help").textContent = "thrrum";
+        return;
+      }
+
+      document.getElementById("help").textContent = "silence";
+    }
+  </script>
 </body>
 </html>
