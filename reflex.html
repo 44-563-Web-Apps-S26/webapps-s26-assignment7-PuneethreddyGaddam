@@ -17,7 +17,7 @@
   <h2>Puneeth Reddy Gaddam reflexes</h2>
 
   <div class="mb-3" id="target">Your time</div>
-  <div class="mb-3" id="counter">Count</div>
+  <div class="mb-3" id="countdown">Count</div>
 
   <button type="button" class="btn btn-primary me-2" id="goButton">Go</button>
   <button type="button" class="btn btn-danger" id="haltButton">Halt</button>
@@ -30,7 +30,26 @@
       console.log(haltTime);
     }
 
+    function beginTime() {
+      for (let i = 0; i < 6; i += 1) {
+        setTimeout(() => {
+          document.getElementById("countdown").innerHTML = i;
+        }, (5 - i) * 1000);
+      }
+
+      setTimeout(() => {
+        if (haltTime === undefined) {
+          document.getElementById("target").innerHTML = "Not soon enough";
+        } else {
+          const targetTime = Date.now();
+          const elapsed = targetTime - haltTime;
+          document.getElementById("target").innerHTML = `Time was ${elapsed}`;
+        }
+      }, 5000);
+    }
+
     document.getElementById("haltButton").onclick = recordTime;
+    document.getElementById("goButton").onclick = beginTime;
   </script>
 
 </body>
