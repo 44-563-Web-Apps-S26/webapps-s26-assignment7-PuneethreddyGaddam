@@ -232,6 +232,7 @@
       }
 
       let scored = false;
+      let tileLabel = "tree";
 
       if (position === statueLocation) {
         img.src = "images/Gloden statue.png";
@@ -239,30 +240,36 @@
         score -= 3;
         gameOver = true;
         scored = true;
+        tileLabel = "statue";
       } else if (position === toucanLocation) {
         img.src = "images/Toucan.png";
         img.onclick = function () { };
         score += 5;
         scored = true;
+        tileLabel = "toucan";
       } else if (lorikeetLocations.includes(position)) {
         img.src = "images/lorikeet.png";
         img.onclick = function () { };
         score += 3;
         scored = true;
+        tileLabel = "lorikeet";
       } else if (buntingLocations.includes(position)) {
         img.src = "images/bunting.png";
         img.onclick = function () { };
         score += 1;
         scored = true;
+        tileLabel = "bunting";
       }
 
       if (!scored) {
         img.src = "images/Tree.png";
+        tileLabel = "tree";
       }
 
       locationsVisited += 1;
       img.alt = `Checked location ${position}.`;
       img.title = `Checked location ${position}.`;
+      img.dataset.text = `Checked location ${position} (${tileLabel}).`;
       updateStatus();
       lastLocation = position;
     }
@@ -281,7 +288,7 @@
 
       if (buntingNeighbors.some((loc) => buntingLocations.includes(loc))) {
         helpValue.textContent = "cheep";
-        return;
+        return "cheep";
       }
 
       let toucanNearby = false;
@@ -307,15 +314,16 @@
 
       if (toucanNearby) {
         helpValue.textContent = "caw";
-        return;
+        return "caw";
       }
 
       if (statueNearby) {
         helpValue.textContent = "thrrum";
-        return;
+        return "thrrum";
       }
 
       helpValue.textContent = "silence";
+      return "silence";
     }
   </script>
 </body>
