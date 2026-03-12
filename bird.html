@@ -203,14 +203,78 @@
     let score = 0;
     let locationsVisited = 0;
     let lastLocation = 0;
-    const statueLocation = 19;
-    const toucanLocation = 14;
-    const lorikeetLocations = [3, 25];
-    const buntingLocations = [2, 5, 11, 20, 21];
+    let statueLocation = 19;
+    let toucanLocation = 14;
+    let lorikeetLocations = [3, 25];
+    let buntingLocations = [2, 5, 11, 20, 21];
     let gameOver = false;
     const totalLocations = 35;
     const columns = 7;
     const rows = 5;
+
+    function randomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    function shuffleArray(values) {
+      for (let i = values.length - 1; i > 0; i -= 1) {
+        const j = randomInt(i + 1);
+        const temp = values[i];
+        values[i] = values[j];
+        values[j] = temp;
+      }
+    }
+
+    function initializeLocations() {
+      const positions = [];
+      for (let i = 0; i < totalLocations; i += 1) {
+        positions.push(i);
+      }
+      shuffleArray(positions);
+      statueLocation = positions[0];
+      toucanLocation = positions[1];
+      lorikeetLocations = [positions[2], positions[3]];
+      buntingLocations = [positions[4], positions[5], positions[6], positions[7], positions[8]];
+    }
+
+    function moveToucan(playerPosition) {
+      const currentRow = Math.floor(toucanLocation / columns);
+      const currentCol = toucanLocation % columns;
+      const directions = [
+        { row: -1, col: 0 },
+        { row: 1, col: 0 },
+        { row: 0, col: -1 },
+        { row: 0, col: 1 }
+      ];
+      shuffleArray(directions);
+
+      let newRow = currentRow;
+      let newCol = currentCol;
+
+      for (let i = 0; i < directions.length; i += 1) {
+        const candidateRow = currentRow + directions[i].row;
+        const candidateCol = currentCol + directions[i].col;
+        if (candidateRow >= 0 && candidateRow < rows && candidateCol >= 0 && candidateCol < columns) {
+          newRow = candidateRow;
+          newCol = candidateCol;
+          break;
+        }
+      }
+
+      toucanLocation = newRow * columns + newCol;
+
+      if (toucanLocation === playerPosition) {
+        gameOver = true;
+        const imgId = ids[playerPosition];
+        const img = document.getElementById(imgId);
+        if (img) {
+          img.src = "images/Toucan.png";
+          img.onclick = function () { };
+        }
+      }
+    }
+
+    initializeLocations();
 
     function updateStatus() {
       const locationsText = locationsVisited === 0
@@ -272,6 +336,10 @@
       img.dataset.text = `Checked location ${position} (${tileLabel}).`;
       updateStatus();
       lastLocation = position;
+
+      if (!gameOver) {
+        moveToucan(position);
+      }
     }
 
     function help() {

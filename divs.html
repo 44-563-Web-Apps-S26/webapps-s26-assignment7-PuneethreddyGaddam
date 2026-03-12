@@ -33,6 +33,9 @@
 		</p>
     <input type="text" id="itemInput">
 		<button onclick="makeNewDiv()">Add end</button>
+    <button onclick="addFront()">Add front</button>
+    <button onclick="remove()">Remove</button>
+    <button onclick="shuffleDivs()">Shuffle</button>
 	
 </body>
 <script>
@@ -49,5 +52,51 @@
 		container.appendChild(element)
 		
 	}
+
+  function addFront() {
+    let element = document.createElement("div")
+    const inputValue = document.getElementById("itemInput").value
+    element.innerHTML = inputValue
+    element.className = "divlist"
+    element.style.color = "orange"
+
+    let container = document.getElementById("target")
+    container.insertBefore(element, container.firstChild)
+  }
+
+  function remove() {
+    const divListItems = document.getElementsByClassName("divlist")
+    const length = divListItems.length
+    if (length === 0) {
+      return
+    }
+
+    if (length > 1) {
+      divListItems[1].remove()
+    } else {
+      divListItems[0].remove()
+    }
+  }
+
+  function shuffleDivs() {
+    const container = document.getElementById("target")
+    const divListItems = Array.from(container.getElementsByClassName("divlist"))
+    if (divListItems.length < 2) {
+      return
+    }
+
+    let indexA = Math.floor(Math.random() * divListItems.length)
+    let indexB = Math.floor(Math.random() * divListItems.length)
+    while (indexB === indexA) {
+      indexB = Math.floor(Math.random() * divListItems.length)
+    }
+
+    const nodeA = divListItems[indexA]
+    const nodeB = divListItems[indexB]
+    const placeholder = document.createElement("div")
+    container.replaceChild(placeholder, nodeA)
+    container.replaceChild(nodeA, nodeB)
+    container.replaceChild(nodeB, placeholder)
+  }
 </script>
 </html>	
