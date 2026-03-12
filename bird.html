@@ -119,6 +119,10 @@
       object-fit: cover;
       display: block;
     }
+    .location img.highlight-special {
+      outline: 3px dashed #f97316;
+      outline-offset: -6px;
+    }
 
     @media (max-width: 800px) {
       .row {
@@ -235,6 +239,7 @@
       toucanLocation = positions[1];
       lorikeetLocations = [positions[2], positions[3]];
       buntingLocations = [positions[4], positions[5], positions[6], positions[7], positions[8]];
+      updateHighlights();
     }
 
     function moveToucan(playerPosition) {
@@ -262,6 +267,7 @@
       }
 
       toucanLocation = newRow * columns + newCol;
+      updateHighlights();
 
       if (toucanLocation === playerPosition) {
         gameOver = true;
@@ -275,6 +281,28 @@
     }
 
     initializeLocations();
+
+    function updateHighlights() {
+      for (let i = 0; i < ids.length; i += 1) {
+        const img = document.getElementById(ids[i]);
+        if (img) {
+          img.classList.remove("highlight-special");
+        }
+      }
+
+      const specials = [
+        statueLocation,
+        toucanLocation,
+        ...lorikeetLocations,
+        ...buntingLocations
+      ];
+      specials.forEach((pos) => {
+        const img = document.getElementById(ids[pos]);
+        if (img) {
+          img.classList.add("highlight-special");
+        }
+      });
+    }
 
     function updateStatus() {
       const locationsText = locationsVisited === 0
